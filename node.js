@@ -36,7 +36,7 @@ app.use("*",(req,res,next)=>{
     next();
 })
 app.use(cors({
-    origin:"http://products-dashboard-alpha.vercel.app",
+    origin:"https://products-dashboard-alpha.vercel.app",
     methods:["GET","POST"]
 }))
 // app.use("/todos/count",todosRoutes)
