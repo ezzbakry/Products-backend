@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json())
 router.get('/',auth,restrict("admin"),getall)
 router.post('/',cors({
-    origin:"*",
+    origin:"http://products-dashboard-alpha.vercel.app",
     methods:["GET","POST"]
 }),createone)
 router.get('/:id',getByid)
