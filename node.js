@@ -28,7 +28,7 @@ let usersRoutes=module.require('./routes/users')
 app.use(express.json());
 app.use("/todos",todosRoutes)
 app.use("/users",cors({
-    origin:"http://localhost:5173",
+    origin:"*",
     methods:["GET","POST"]
 }),usersRoutes)
 app.use("*",(req,res,next)=>{
@@ -36,14 +36,14 @@ app.use("*",(req,res,next)=>{
     next();
 })
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"*",
     methods:["GET","POST"]
 }))
 // app.use("/todos/count",todosRoutes)
 
 
 const mongoose = module.require('mongoose');
-mongoose.connect('mongodb+srv://ezzeldenamer:1234@cluster0.6jmg9.mongodb.net/tasks').then(()=>{
+mongoose.connect(process.env.Mongo).then(()=>{
     console.log("connected")
 }).catch((err)=>{
     console.log(err)
@@ -51,8 +51,8 @@ mongoose.connect('mongodb+srv://ezzeldenamer:1234@cluster0.6jmg9.mongodb.net/tas
 });
 
 
-app.listen(3000,()=>{
-    console.log("started")
+app.listen(process.env.PORT,()=>{
+    console.log(`started at ${process.env.PORT}`)
 })
 // let [,,command]=process.argv;
 
