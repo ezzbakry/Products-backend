@@ -28,7 +28,7 @@ let usersRoutes=module.require('./routes/users')
 app.use(express.json());
 app.use("/todos",todosRoutes)
 app.use("/users",cors({
-    origin:"*",
+    origin:"http://products-dashboard-alpha.vercel.app",
     methods:["GET","POST"]
 }),usersRoutes)
 app.use("*",(req,res,next)=>{
@@ -36,7 +36,7 @@ app.use("*",(req,res,next)=>{
     next();
 })
 app.use(cors({
-    origin:"*",
+    origin:"http://products-dashboard-alpha.vercel.app",
     methods:["GET","POST"]
 }))
 // app.use("/todos/count",todosRoutes)
